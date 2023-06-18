@@ -12,12 +12,12 @@
   "dependencies": {
     "@gomomento/sdk": "^1.25.1",
     "dotenv": "^16.3.0",
-    "openai": "^3.3.0",
-    "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.21.0"
+    "node-telegram-bot-api": "^0.61.0",
+    "openai": "^3.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
+    "@types/node-telegram-bot-api": "^0.61.6",
     "@types/qrcode-terminal": "^0.12.0",
     "typescript": "^5.1.3"
   }

@@ -55,6 +55,7 @@ export const personalDataContext =
   "-LinkedIn: https://www.linkedin.com/in/rafael-molina-6649ab66/\n" +
   "-Github: https://github.com/AboveZtars\n" +
   "-Fecha de nacimiento: 11/08/1997\n" +
+  "-Edad: 25\n" +
   "-Lugar de nacimiento: Clinica la Arboleda, Caracas, Venezuela\n" +
   "-Lugar de residencia: Colinas de Bello Monte, Caracas, Venezuela\n" +
   "-Lugar de trabajo: Remoto\n" +

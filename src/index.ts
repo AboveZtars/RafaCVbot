@@ -1,34 +1,26 @@
 import "dotenv/config.js";
 import {Agents} from "./agents";
-import {Client, NoAuth} from "whatsapp-web.js";
-import qrcode from "qrcode-terminal";
+import TelegramBot from "node-telegram-bot-api";
 
-const client = new Client({
-  authStrategy: new NoAuth(),
-});
+if (process.env.TELEGRAM_TOKEN_ACCESS === undefined) {
+  throw new Error("TELEGRAM_TOKEN_ACCESS must be provided!");
+}
+// Create a Telegram bot
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN_ACCESS, {polling: true});
 
-client.on("qr", (qr) => {
-  qrcode.generate(qr, {small: true});
-});
-
-client.on("ready", () => {
-  console.log("Client is ready!");
-});
-
-client.on("message", async (message) => {
+bot.on("message", async (msg) => {
+  const text = msg.text;
+  const chatId = msg.chat.id;
+  if (!text) {
+    return await bot.sendMessage(chatId, "Tu mensaje debe contener texto");
+  }
   try {
-    console.log(message.body);
-    const text = message.body;
     const agents = new Agents();
     const resp = await agents.clasifierAgent(text);
     const rafaResp = await agents.rafaAgent(text, resp);
-    await client.sendMessage(
-      message.from,
-      rafaResp ? rafaResp : "Sin respuesta"
-    );
+    return await bot.sendMessage(chatId, rafaResp ? rafaResp : "Sin respuesta");
   } catch (error) {
-    console.log(error);
+    console.log("Fallo");
+    return await bot.sendMessage(chatId, "La api se quedo sin request xd");
   }
 });
-
-client.initialize();

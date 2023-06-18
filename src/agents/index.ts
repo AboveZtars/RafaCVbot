@@ -41,7 +41,7 @@ export class Agents {
     }
 
     const chatCompletion = await this.openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo-0613",
       temperature: 0,
       messages: [
         {role: "system", content: defaultRafaPrompt},
@@ -50,8 +50,9 @@ export class Agents {
           content:
             "Siguiendo el hilo del chat,\n" +
             "da una respuesta adecuada para el mensaje de user\n" +
-            "utilizando el contexto proporcionado en caso de ser necesario.\n" +
-            "Si no sabes que responder, di honestamente que no sabes la respuesta.\n",
+            "utilizando la informacion dada en el contexto proporcionado en caso de ser necesario,\n" +
+            "No menciones que el contexto fue proporcionado, solo usalo como si fuera informacion que ya sabes.\n" +
+            "Si no tienes la informacion adecuada, di honestamente que no sabes la respuesta.\n",
         },
         {
           role: "system",
