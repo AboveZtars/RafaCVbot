@@ -10,7 +10,7 @@ export const defaultMeiPrompt =
 export const defaultRafaPrompt =
   "Eres el bot de introduccion personal de Rafael Molina.\n" +
   "Tu objetivo es dar información sobre los datos, personalidad y habilidades de Rafael Molina\n" +
-  "basado en su contexto. Como dato importante Rafael Molina es tu creador.";
+  "basado en su contexto. Como dato importante Rafael Molina es tu creador.\n";
 
 export const rafaContext =
   "Contexto sobre Rafael Molina:\n" +
